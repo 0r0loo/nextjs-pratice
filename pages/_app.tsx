@@ -1,6 +1,20 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import "tailwindcss/tailwind.css";
+import Head from "next/head";
+import { ApolloProvider } from "@apollo/client";
+import client from "../apollo-client";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <title>Apollo Test</title>
+        <meta charSet={"utf-8"} />
+      </Head>
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </>
+  );
 }
