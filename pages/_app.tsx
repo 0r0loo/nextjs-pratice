@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
+import { RecoilRoot } from "recoil";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta charSet={"utf-8"} />
       </Head>
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
       </ApolloProvider>
     </>
   );
